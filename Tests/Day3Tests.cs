@@ -42,7 +42,39 @@ namespace Tests
         {
             var input = File.ReadAllText(@"/Users/jake/Source/GitHub/advent-of-code-2015/Tests/TestData/Day3Input.txt");
             var result = Program.HousesVisited(input);
-            Assert.AreEqual(2, result);
+            Assert.AreEqual(2565, result);
+        }
+
+        [Test]
+        public void Example4()
+        {
+            var input = "^v";
+            var result = Program.HousesVisited(input, true);
+            Assert.AreEqual(3, result);
+        }
+
+        [Test]
+        public void Example5()
+        {
+            var input = "^>v<";
+            var result = Program.HousesVisited(input, true);
+            Assert.AreEqual(3, result);
+        }
+
+        [Test]
+        public void Example6()
+        {
+            var input = "^v^v^v^v^v";
+            var result = Program.HousesVisited(input, true);
+            Assert.AreEqual(11, result);
+        }
+
+        [Test]
+        public void Puzzle2()
+        {
+            var input = File.ReadAllText(@"/Users/jake/Source/GitHub/advent-of-code-2015/Tests/TestData/Day3Input.txt");
+            var result = Program.HousesVisited(input, true);
+            Assert.AreEqual(2639, result);
         }
     }
 }
