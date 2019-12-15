@@ -29,7 +29,23 @@ namespace Day3
             if (!visited.Any(c => c.SequenceEqual(coords))) visited.Add(coords);
         }
 
-        public static int HousesVisited(string directions)
+        private static List<int> Move(bool santa, ref List<int> santaCoords, ref List<int> robotCoords, int x, int y)
+        {
+            List<int> coords;
+            if (santa)
+            {
+                coords = GetNewCoords(santaCoords, x, y);
+                santaCoords = coords;
+            }
+            else
+            {
+                coords = GetNewCoords(robotCoords, x, y);
+                robotCoords = coords;
+            }
+            return coords;
+        }
+
+        public static int HousesVisited(string directions, bool robotHelper = false)
         {
             var startingCoords = new List<int>();
             startingCoords.Add(0);
@@ -37,36 +53,37 @@ namespace Day3
             var visited = new List<List<int>>();
             visited.Add(startingCoords);
 
-            var prevCoords = visited[0];
+            var santaCoords = visited[0];
+            var robotCoords = visited[0];
+
+            var santa = true;
 
             foreach (var direction in directions.ToCharArray())
             {
                 switch (direction)
                 {
                     case NORTH:
-                        var coords1 = GetNewCoords(prevCoords, 0, 1);
-                        prevCoords = coords1;
+                        List<int> coords1 = Move(santa, ref santaCoords, ref robotCoords, 0, 1);
                         if (!visited.Any(c => c.SequenceEqual(coords1))) visited.Add(coords1);
                         break;
                     case SOUTH:
-                        var coords2 = GetNewCoords(prevCoords, 0, -1);
-                        prevCoords = coords2;
+                        List<int> coords2 = Move(santa, ref santaCoords, ref robotCoords, 0, -1);
                         if (!visited.Any(c => c.SequenceEqual(coords2))) visited.Add(coords2);
                         break;
                     case EAST:
-                        var coords3 = GetNewCoords(prevCoords, 1, 0);
-                        prevCoords = coords3;
+                        List<int> coords3 = Move(santa, ref santaCoords, ref robotCoords, 1, 0);
                         if (!visited.Any(c => c.SequenceEqual(coords3))) visited.Add(coords3);
                         break;
                     case WEST:
-                        var coords4 = GetNewCoords(prevCoords, -1, 0);
-                        prevCoords = coords4;
+                        List<int> coords4 = Move(santa, ref santaCoords, ref robotCoords, -1, 0);
                         if (!visited.Any(c => c.SequenceEqual(coords4))) visited.Add(coords4);
                         break;
                     default:
                         throw new Exception("Not a valid direction!");
                         break;
                 }
+
+                if (robotHelper) santa = !santa;
             }
 
             return visited.Count;
