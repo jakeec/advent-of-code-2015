@@ -69,7 +69,7 @@ namespace Tests
         [Test]
         public void Puzzle1()
         {
-            var input = File.ReadAllText(@"/Users/jake/Source/GitHub/advent-of-code-2015/Tests/Day1Input.txt");
+            var input = File.ReadAllText(@"/Users/jake/Source/GitHub/advent-of-code-2015/Tests/TestData/Day1Input.txt");
             var result = Program.MoveFloors(input);
             Assert.AreEqual(232, result);
         }
@@ -77,7 +77,7 @@ namespace Tests
         [Test]
         public void Puzzle2()
         {
-            var input = File.ReadAllText(@"/Users/jake/Source/GitHub/advent-of-code-2015/Tests/Day1Input.txt");
+            var input = File.ReadAllText(@"/Users/jake/Source/GitHub/advent-of-code-2015/Tests/TestData/Day1Input.txt");
             var result = Program.MoveFloorsUntilBasement(input);
             Assert.AreEqual(1783, result);
         }

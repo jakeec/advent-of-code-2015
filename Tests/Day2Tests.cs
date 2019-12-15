@@ -34,7 +34,7 @@ namespace Tests
         [Test]
         public void Puzzle1()
         {
-            var input = File.ReadAllText(@"/Users/jake/Source/GitHub/advent-of-code-2015/Tests/Day2Input.txt");
+            var input = File.ReadAllText(@"/Users/jake/Source/GitHub/advent-of-code-2015/Tests/TestData/Day2Input.txt");
             var calc = new WrappingPaperCalculator();
             var result = calc.CalculateWrappingPaperRequired(input);
             Assert.AreEqual(1588178, result);
@@ -61,7 +61,7 @@ namespace Tests
         [Test]
         public void Puzzle2()
         {
-            var input = File.ReadAllText(@"/Users/jake/Source/GitHub/advent-of-code-2015/Tests/Day2Input.txt");
+            var input = File.ReadAllText(@"/Users/jake/Source/GitHub/advent-of-code-2015/Tests/TestData/Day2Input.txt");
             var calc = new WrappingPaperCalculator();
             var result = calc.CalculateRibbonRequired(input);
             Assert.AreEqual(3783758, result);
